@@ -14,6 +14,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 bot = Bot(token=TOKEN)
 router = Router()
+global cx  # Объявляем переменную cx как глобальную
+cx = 1  # Инициализируем переменную cx
 
 # Главное меню
 main_keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -38,8 +40,8 @@ photo_captions = {
     "7.jpg": "Это я ночью ем без тебя",
     "8.jpg": "Это мы собираемся куда-то и почему-то у меня голова растет сбоку, можно сказать 'уложила' меня",
     "10.jpg": "Чувствуют стиль Эрмитажа!",
-    "11.jpg": "Поминаем бедолагу",
-    "13.jpg": "Интересное путешествие, с интересными разговорами позади нас"
+    "9.jpg": "Поминаем бедолагу",
+    "3.jpg": "Интересное путешествие, с интересными разговорами позади нас"
 }
 
 @router.message(CommandStart())
@@ -73,9 +75,13 @@ async def back_to_main(callback_query: types.CallbackQuery):
 
 @router.callback_query(F.data == 'random_photo')
 async def handle_random_photo(callback_query: types.CallbackQuery):
+    global cx  # Объявляем переменную cx как глобальную
     photo_folder = 'media/our'
-    photos = os.listdir(photo_folder)
-    random_photo = random.choice(photos)
+    random_photo = str(cx) + '.jpg'
+    
+    if cx+1 == 11:
+        cx = 0
+    cx += 1
     caption = photo_captions.get(random_photo, "Нет подписи для этого фото.")
     photo = FSInputFile(photo_folder+'/'+random_photo)
     
