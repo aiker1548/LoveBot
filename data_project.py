@@ -45,3 +45,8 @@ MSG_HELLO = 'Привет красотуля! Этот бот был созда�
 
 
 TOKEN = '6758507369:AAE7uYfmaVkonVkp5EgW6a_tOt7fF94sh-Q'
+
+TOKEN_AI = 'sk-SdFCOZZgck9cNj8jXxsrahrcYxqFjWlq'
+
+URL_AI = "https://api.proxyapi.ru/openai/v1"
+

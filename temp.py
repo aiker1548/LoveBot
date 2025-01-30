@@ -1,3 +1,5 @@
+import datetime
+import time
 COMPLIMENTS_MOM = [
     "Ты самая заботливая мама на свете!",
     "Твоя любовь делает наш дом уютным и тёплым.",
@@ -30,3 +32,8 @@ COMPLIMENTS_MOM = [
     "Ты всегда веришь в меня, даже когда я сомневаюсь.",
     "Ты делаешь нашу жизнь ярче и счастливее."
 ]
+
+
+t = datetime.datetime.now()
+time.sleep(5)
+print((datetime.datetime.now() - t).seconds - 1)
